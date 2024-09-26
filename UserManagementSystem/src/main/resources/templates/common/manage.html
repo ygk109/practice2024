@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:float="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="/easyui/demo/demo.css" />
+    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/easyui/easyui-lang-jp.js"></script>
+    <script type="text/javascript" src="/js1/manageruser.js"></script>
+  </head>
+  <style>
+    table,
+    td,
+    th {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    .ftitle {
+      text-align: left;
+    }
+    .fitem {
+      text-align: left;
+      margin
+    }
+  </style>
+
+  <body>
+<!-- 메뉴명 -->
+      <div class="main">
+        <div>      
+            <a style="font-size: 20px">株式会社ブライトスター</a>
+        </div>
+        
+        <div style="margin-left: 380px">
+            <a style="font-size: 35px">社内統合管理システム</a>
+        </div>
+        
+        <div>
+        <label style="font-size: 12px">BRIGHT STAR CO.LTD.</label>  
+        </div>
+
+        <div style="margin: 10px 0px 10px 0px">
+          <a href="#">社員管理 </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사원관리 -->
+    <div style="background-color: gray; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px"><a style="color: blue">■ </a>社員管理</div>
+
+    <!-- 조건 검색 -->
+    <div style="width: 1000px; height: 280px; padding: 0px 20px">
+      <div class="ftitle">■検索条件</div>
+      <form id="content" method="post">
+        <div class="fitem" style="margin: 10px 0px 10px 0px;">
+          <label>所属会社</label>
+          <select style="width: 177px; margin-left: 15px;">
+            <option>全て</option>
+            <option>株式会社ブライトスター</option>
+            <option>株式会社トップクラウド</option>
+        </select>
+
+          <label style="margin-left: 15px;">社員名</label>
+          <input style="margin-left: 15px;" type="text" required="true" />
+        </div>
+        <div style="margin: 10px 0px 10px 0px;">
+        <label>職業種類</label>
+        <select style="width: 177px;  margin-left: 15px;">
+            <option>役員</option>
+            <option>総務</option>
+            <option>IT営業</option>
+            <option selected>ITエンジニア</option>
+            <option>不動産スタッフ</option>
+            <option>個人事業主</option>
+        </select>
+        <label style="margin-left: 15px;">在職</label>
+        <input style="margin-left: 15px;" type="checkbox" checked />
+        <label style="margin-left: 15px;">非在職</label>
+        <input style="margin-left: 15px;" type="checkbox" />
+    </div>
+ 
+    <div style="margin: 10px 0 10px 0">
+      <button style="background-color: aquamarine; border: none; width: 150px; height: 35px; font-size: 24px; ">検　索</button>
+    </div>
+</form>
+
+      <!-- 사원 일람 -->
+      <div class="ftitle" style="margin: 10px 0 0 0">■社員一覧</div>
+      <div class="unit" style="text-align: right">
+        <label>件数：</label>
+        <label>3件</label>
+        <a href="#">新規登録</a>
+      </div>
+      <div class="dtable">
+        <table style="width: 1000px">
+          <thead style="background-color: blue">
+            <tr>
+              <th>所属会社</th>
+              <th>社員名</th>
+              <th>性別</th>
+              <th>職業種類</th>
+              <th>入社日</th>
+              <th>退社日</th>
+              <th>編集</th>
+            </tr>
+          </thead>
+          <tbody style="background-color: white">
+            <tr>
+              <td>（株）ブライトスター</td>
+              <td>馬　XX</td>
+              <td>男</td>
+              <td>ITエンジニア</td>
+              <td>2014-02-11</td>
+              <td>YYYY-MM-DD</td>
+              <td>更新</td>
+            </tr>
+            <tr>
+              <td>（株）ブライトスター</td>
+              <td>馬　XX</td>
+              <td>男</td>
+              <td>ITエンジニア</td>
+              <td>2014-02-11</td>
+              <td>YYYY-MM-DD</td>
+              <td>更新</td>
+            </tr>
+            <tr>
+              <td>（株）ブライトスター</td>
+              <td>馬　XX</td>
+              <td>男</td>
+              <td>ITエンジニア</td>
+              <td>2014-02-11</td>
+              <td>YYYY-MM-DD</td>
+              <td>更新</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
