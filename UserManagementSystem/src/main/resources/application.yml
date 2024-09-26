@@ -13,3 +13,7 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
+    
+spring:
+  main:
+    allow-circular-references: true
