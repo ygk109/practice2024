@@ -16,13 +16,41 @@
     th {
       border: 1px solid black;
       border-collapse: collapse;
+      font-size: 18px;
     }
+    label{
+      font-size: 16px;
+    }
+    button{
+      border: 0;
+     line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+     background-color: rgb(0, 180, 220);
+     background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    }
+
+ button hover {
+  background-color: rgba(255, 0, 0, 1);
+}
+
     .ftitle {
       text-align: left;
     }
     .fitem {
       text-align: left;
-      margin
     }
   </style>
 
@@ -60,7 +88,7 @@
             <option>全て</option>
             <option>株式会社ブライトスター</option>
             <option>株式会社トップクラウド</option>
-        </select>
+          </select>
 
           <label style="margin-left: 15px;">社員名</label>
           <input style="margin-left: 15px;" type="text" required="true" />
@@ -82,7 +110,7 @@
     </div>
  
     <div style="margin: 10px 0 10px 0">
-      <button style="background-color: aquamarine; border: none; width: 150px; height: 35px; font-size: 24px; ">検　索</button>
+      <button type="button" style="width: 150px; height: 35px; ">検　索</button>
     </div>
 </form>
 
