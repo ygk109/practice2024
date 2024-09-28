@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:float="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <style>
+    table,
+    td,
+    th {
+      width: 1000px;
+      border: 1px solid black;
+      border-collapse: collapse;
+      font-size: 16px;
+    }
+    label{
+      font-size: 16px;
+    }
+    button{
+      border: 0;
+      line-height: 2.5;
+      font-size: 1rem;
+      padding: 0 20px;
+      text-align: center;
+      color: #fff;
+      text-shadow: 1px 1px 1px #000;
+      border-radius: 10px;
+      background-color: rgb(0, 180, 220);
+      background-image: linear-gradient(
+      to top left,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2) 30%,
+      rgba(0, 0, 0, 0)
+      );
+    box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    }
+    .update:hover{
+        background-color: aqua;
+    }
+    .ftitle {
+      text-align: left;
+      margin: 10px 0 0 0;
+      font-size: 20px;
+    }
+    .fitem {
+      text-align: left;
+    }
+    .info label{
+      width: 1000px;
+    }
+    .dtable select{
+      border:none;
+    }
+  </style>
+
+  <body>
+<!-- 메뉴명 -->
+      <div class="main">
+        <div>      
+            <a style="font-size: 20px">株式会社ブライトスター</a>
+        </div>
+        
+        <div style="margin-left: 380px">
+            <a style="font-size: 35px">社内統合管理システム</a>
+        </div>
+        
+        <div>
+        <label style="font-size: 12px">BRIGHT STAR CO.LTD.</label>  
+        </div>
+
+    <!-- 사원등록 -->
+    <div style="background-color: gray; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px"><a style="color: blue">■ </a>社員更新</div>
+
+    <!-- 기본정보 -->
+    <div style="width: 1000px; height: 280px; padding: 0px 20px">
+      <div class="ftitle">基本情報</div><hr style="border-color: aqua;">
+        <div>
+          <label>社員名（漢字）</label>
+          <a>姓</a><input type="text" style="margin-left: 15px; width:100px" required="true" />
+          <a>名</a><input type="text" style="margin-left: 15px; width:100px" required="true" />
+          <a style="color: red">必須</a>
+        </div>
+        <div>
+          <label>性別</label>
+          <input type="radio" style="margin-left: 8%;"/><a>男</a>
+          <input type="radio"/><a>女</a>  
+        </div>
+        <div class="ftitle">会社関連情報</div><hr style="border-color: aqua;">
+        <div>
+          <div>
+          <label>所属会社</label>
+          <select style="margin-left: 5%;">
+            <option>株式会社ブライトスター</option>
+            <option>株式会社トップクラウド</option>
+          </select>
+          </div>
+          <div>
+            <label>入社日</label>
+            <input type="date" style="margin-left: 6.5%;"/>
+          </div>
+          <div>
+            <label>退社日</label>
+            <input type="text" style="margin-left: 6.5%;"/><a>※YYYY-MM-DD</a>
+          </div>
+          <div>
+            <label>職業種類</label>
+            <select style="margin-left: 5%;">
+              <option>役員</option>
+              <option>総務</option>
+              <option>IT営業</option>
+              <option selected>ITエンジニア</option>
+              <option>不動産スタッフ</option>
+              <option>個人事業主</option>
+            </select>
+          </div>
+          <div style="margin: 10px 0 10px 0; text-align: center;">
+            <button class="update" type="button" style="width: 150px; height: 35px; ">更　新</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
