@@ -34,6 +34,10 @@
     inset 2px 2px 3px rgba(255, 255, 255, 0.6),
     inset -2px -2px 3px rgba(0, 0, 0, 0.6);
     }
+    .tap:hover{
+        background-color: red;
+        color: white;
+    }
     .search:hover{
         background-color: aqua;
     }
@@ -62,13 +66,13 @@
         </div>
 
         <div style="margin: 10px 0px 10px 0px; font-size: 24px;">
-          <a href="#">社員管理 </a>
+          <a class="tap" href="./manage.html" style="font-size: 16px;">社員管理 </a>
         </div>
       </div>
     </div>
 
     <!-- 사원관리 -->
-    <div style="background-color: gray; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px"><a style="color: blue">■ </a>社員管理</div>
+    <div style="background: linear-gradient(gray,white, gray); border-radius: 0.2em; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px"><a style="color: blue">■ </a>社員管理</div>
 
     <!-- 조건 검색 -->
     <div style="width: 1000px; height: 280px; padding: 0px 20px">
@@ -111,7 +115,7 @@
       <div class="unit" style="text-align: right">
         <label>件数：</label>
         <label>3件</label>
-        <a href="#">新規登録</a>
+        <a href="./register">新規登録</a>
       </div>
       <div class="dtable">
         <table style="width: 1000px">
