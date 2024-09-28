@@ -2,13 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:float="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css" />
-    <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css" />
-    <link rel="stylesheet" type="text/css" href="/easyui/demo/demo.css" />
-    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
-    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="/easyui/easyui-lang-jp.js"></script>
-    <script type="text/javascript" src="/js1/manageruser.js"></script>
   </head>
   <style>
     table,
@@ -41,13 +34,12 @@
     inset 2px 2px 3px rgba(255, 255, 255, 0.6),
     inset -2px -2px 3px rgba(0, 0, 0, 0.6);
     }
-
- button hover {
-  background-color: rgba(255, 0, 0, 1);
-}
-
+    .search:hover{
+        background-color: aqua;
+    }
     .ftitle {
       text-align: left;
+      margin: 10px 0 0 0;
     }
     .fitem {
       text-align: left;
@@ -69,7 +61,7 @@
         <label style="font-size: 12px">BRIGHT STAR CO.LTD.</label>  
         </div>
 
-        <div style="margin: 10px 0px 10px 0px">
+        <div style="margin: 10px 0px 10px 0px; font-size: 24px;">
           <a href="#">社員管理 </a>
         </div>
       </div>
@@ -110,12 +102,12 @@
     </div>
  
     <div style="margin: 10px 0 10px 0">
-      <button type="button" style="width: 150px; height: 35px; ">検　索</button>
+      <button class="search" type="button" style="width: 150px; height: 35px; ">検　索</button>
     </div>
 </form>
 
       <!-- 사원 일람 -->
-      <div class="ftitle" style="margin: 10px 0 0 0">■社員一覧</div>
+      <div class="ftitle">■社員一覧</div>
       <div class="unit" style="text-align: right">
         <label>件数：</label>
         <label>3件</label>

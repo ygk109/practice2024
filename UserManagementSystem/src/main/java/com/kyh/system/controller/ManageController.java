@@ -24,4 +24,9 @@ public class ManageController {
     public String manage() {
         return "/common/manage";
     }
+    
+    @RequestMapping(value = "/", method = {RequestMethod.POST, RequestMethod.GET})
+    public String register() {
+    	return "/common/register";
+    }
 }
