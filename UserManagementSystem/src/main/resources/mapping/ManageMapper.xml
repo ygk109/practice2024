@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kyh.system.mapper.ManageMapper">
+
+	<select id="findByCriteria" resultType="com.kyh.system.entity.Staff">
+    	SELECT * FROM syain_test
+    	WHERE (SYOZOKU_KAISYA = #{companyName} OR #{companyName} IS NULL)
+     	 AND (SYOKUGYO_KIND = #{jobName} OR #{jobName} IS NULL);
+	</select>
+
+</mapper>
