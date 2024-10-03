@@ -77,49 +77,48 @@
     <!-- 조건 검색 -->
     <div style="width: 1000px; height: 280px; padding: 0px 20px">
       <div class="ftitle">■検索条件</div>
-      <form id="content" method="post">
+      <form id="content" method="get" action="./search">
         <div class="fitem" style="margin: 10px 0px 10px 0px;">
-          <label>所属会社</label>
-          <select style="width: 177px; margin-left: 15px;">
-            <option>全て</option>
-            <option>株式会社ブライトスター</option>
-            <option>株式会社トップクラウド</option>
-          </select>
-
-          <label style="margin-left: 15px;">社員名</label>
-          <input style="margin-left: 15px;" type="text" required="true" />
+            <label>所属会社</label>
+            <select name="companyName" style="width: 177px; margin-left: 15px;">
+                <option name="companyName" value="0">全て</option>
+                <option name="companyName" value="1">株式会社ブライトスター</option>
+                <option name="companyName" value="2">株式会社トップクラウド</option>
+            </select>
+    
+            <label style="margin-left: 15px;">社員名</label>
+            <input name="employeeName" style="margin-left: 15px;" type="text" required="true" />
         </div>
         <div style="margin: 10px 0px 10px 0px;">
-        <label>職業種類</label>
-        <select style="width: 177px;  margin-left: 15px;">
-            <option>役員</option>
-            <option>総務</option>
-            <option>IT営業</option>
-            <option selected>ITエンジニア</option>
-            <option>不動産スタッフ</option>
-            <option>個人事業主</option>
-        </select>
-        <label style="margin-left: 15px;">在職</label>
-        <input style="margin-left: 15px;" type="checkbox" checked />
-        <label style="margin-left: 15px;">非在職</label>
-        <input style="margin-left: 15px;" type="checkbox" />
-    </div>
- 
-    <div style="margin: 10px 0 10px 0">
-      <button class="search" type="button" style="width: 150px; height: 35px; ">検　索</button>
-    </div>
-</form>
+            <label>職業種類</label>
+            <select name="jobName" style="width: 177px;  margin-left: 15px;">
+                <option value="1">役員</option>
+                <option value="2">総務</option>
+                <option value="3">IT営業</option>
+                <option value="4" selected>ITエンジニア</option>
+                <option value="5">不動産スタッフ</option>
+                <option value="6">個人事業主</option>
+            </select>
+            <label style="margin-left: 15px;">在職</label>
+            <input name="isEmployed" id="checkbox1" style="margin-left: 15px;" type="checkbox" checked />
+            <label style="margin-left: 15px;">非在職</label>
+            <input name="isNotEmployed" id="checkbox2" style="margin-left: 15px;" type="checkbox" />
+        </div>
+        <div style="margin: 10px 0 10px 0">
+            <button id="searchButton" class="search" type="submit" style="width: 150px; height: 35px;">検　索</button>
+        </div>
+    </form>
 
       <!-- 사원 일람 -->
       <div class="ftitle">■社員一覧</div>
       <div class="unit" style="text-align: right">
         <label>件数：</label>
-        <label>3件</label>
+        <label>件</label>
         <a href="./register">新規登録</a>
       </div>
       <div class="dtable">
         <table style="width: 1000px">
-          <thead style="background-color: blue">
+          <thead style="background-color: aqua">
             <tr>
               <th>所属会社</th>
               <th>社員名</th>
@@ -130,37 +129,34 @@
               <th>編集</th>
             </tr>
           </thead>
+          <!-- 검색 조건에 맞는 결과를 행 추가할 것 -->
           <tbody style="background-color: white">
-            <tr>
-              <td>（株）ブライトスター</td>
-              <td>馬　XX</td>
-              <td>男</td>
-              <td>ITエンジニア</td>
-              <td>2014-02-11</td>
-              <td>YYYY-MM-DD</td>
-              <td>更新</td>
-            </tr>
-            <tr>
-              <td>（株）ブライトスター</td>
-              <td>馬　XX</td>
-              <td>男</td>
-              <td>ITエンジニア</td>
-              <td>2014-02-11</td>
-              <td>YYYY-MM-DD</td>
-              <td>更新</td>
-            </tr>
-            <tr>
-              <td>（株）ブライトスター</td>
-              <td>馬　XX</td>
-              <td>男</td>
-              <td>ITエンジニア</td>
-              <td>2014-02-11</td>
-              <td>YYYY-MM-DD</td>
-              <td>更新</td>
+            <tr th:each="employee : ${employees}">
+              <td th:text="${employee.companyName != null ? employee.companyName : 'N/A'}"></td>
+                <td th:text="${employee.firstName} + ' ' + ${employee.lastName}"></td>
+                <td th:text="${employee.gender}"></td>
+                <td th:text="${employee.jobName}"></td>
+                <td th:text="${employee.startDate}"></td>
+                <td th:text="${employee.endDate}"></td>
+                <td>
+                    <a href="./update">更新</a><br>
+                    <a onclick="" id="tdelete" >削除</a>
+                </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function(){
+            const checkbox1= document.getElementById('checkbox1')
+            const checkbox2= document.getElementById('checkbox2')
+            //체크박스 모두 선택 안되어 있다면 경고창 노출
+            if(!checkbox1.checked && !checkbox2.checked){
+                alert('在籍と非在籍がいずれにしても、１つのチェックが必須です。');
+            }
+        })
+
+    </script>
   </body>
 </html>

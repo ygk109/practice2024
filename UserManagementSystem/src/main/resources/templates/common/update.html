@@ -73,17 +73,18 @@
     <div style="background: linear-gradient(gray,white, gray); border-radius: 0.2em; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px"><a style="color: blue">■ </a>社員更新</div>
 
     <!-- 기본정보 -->
+    <form method="get" action="/manage/update">
     <div style="width: 1000px; height: 280px; padding: 0px 20px">
       <div class="ftitle">基本情報</div><hr style="border-color: aqua;">
         <div>
           <label>社員名（漢字）</label>
-          <a>姓</a><input type="text" style="margin-left: 15px; width:100px" required="true" />
-          <a>名</a><input type="text" style="margin-left: 15px; width:100px" required="true" />
+          <a>姓</a><input type="text" id="firstName" maxlength="15" style="margin-left: 15px; width:120px" required="true" />
+          <a>名</a><input type="text" id="lastName" maxlength="15" style="margin-left: 15px; width:120px" required="true" />
           <a style="color: red">必須</a>
         </div>
         <div>
           <label>性別</label>
-          <input type="radio" style="margin-left: 8%;"/><a>男</a>
+          <input type="radio" style="margin-left: 8%;" checked/><a>男</a>
           <input type="radio"/><a>女</a>  
         </div>
         <div class="ftitle">会社関連情報</div><hr style="border-color: aqua;">
@@ -97,11 +98,11 @@
           </div>
           <div>
             <label>入社日</label>
-            <input type="date" style="margin-left: 6.5%;"/>
+            <input type="date" name="startDate" id="currentDate" style="margin-left: 6.5%;" />
           </div>
           <div>
             <label>退社日</label>
-            <input type="text" style="margin-left: 6.5%;"/><a>※YYYY-MM-DD</a>
+            <input type="date" name="endDate" id="currentDate2" style="margin-left: 6.5%;" />
           </div>
           <div>
             <label>職業種類</label>
@@ -115,11 +116,34 @@
             </select>
           </div>
           <div style="margin: 10px 0 10px 0; text-align: center;">
-            <button class="update" type="button" onclick=location.href="." style="width: 150px; height: 35px; ">更　新</button>
+            <button class="update" type="submit" id="updateButton" onclick=location.href="." style="width: 150px; height: 35px; ">更　新</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</form>
 </body>
+  <!-- 날짜 변환 스크립트 -->
+  <script>
+    document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
+    document.getElementById('currentDate2').value = new Date().toISOString().substring(0, 10);
+    
+    document.getElementById('updateButton').addEventListener('click',function(){
+      const firstname = document.getElementById('firstName').value;
+      const lastname = document.getElementById('lastName').value;
+      if(firstname == ""){
+        alert('姓を入力してください。');
+      }
+
+      if(lastname == ""){
+        alert('名を入力してください。');
+      }
+
+      else{
+        return true;
+      }
+    });
+
+  </script>
 </html>
