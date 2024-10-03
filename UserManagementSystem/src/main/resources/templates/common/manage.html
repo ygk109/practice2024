@@ -77,13 +77,13 @@
     <!-- 조건 검색 -->
     <div style="width: 1000px; height: 280px; padding: 0px 20px">
       <div class="ftitle">■検索条件</div>
-      <form id="content" method="post" th:action="@{/manage/search}">
+      <form id="content" method="get" action="./search">
         <div class="fitem" style="margin: 10px 0px 10px 0px;">
             <label>所属会社</label>
             <select name="companyName" style="width: 177px; margin-left: 15px;">
-                <option value="0">全て</option>
-                <option value="1">株式会社ブライトスター</option>
-                <option value="2">株式会社トップクラウド</option>
+                <option name="companyName" value="0">全て</option>
+                <option name="companyName" value="1">株式会社ブライトスター</option>
+                <option name="companyName" value="2">株式会社トップクラウド</option>
             </select>
     
             <label style="margin-left: 15px;">社員名</label>
@@ -132,15 +132,15 @@
           <!-- 검색 조건에 맞는 결과를 행 추가할 것 -->
           <tbody style="background-color: white">
             <tr th:each="employee : ${employees}">
-                <td th:text="${employee.companyName}"></td>
+              <td th:text="${employee.companyName != null ? employee.companyName : 'N/A'}"></td>
                 <td th:text="${employee.firstName} + ' ' + ${employee.lastName}"></td>
                 <td th:text="${employee.gender}"></td>
                 <td th:text="${employee.jobName}"></td>
                 <td th:text="${employee.startDate}"></td>
                 <td th:text="${employee.endDate}"></td>
                 <td>
-                    <a href="#" onclick="updateEmployee(${employee.userId})">更新</a>
-                    <a href="#" id="tdelete" onclick="deleteEmployee(${employee.userId})">削除</a>
+                    <a href="./update">更新</a><br>
+                    <a onclick="" id="tdelete" >削除</a>
                 </td>
             </tr>
           </tbody>

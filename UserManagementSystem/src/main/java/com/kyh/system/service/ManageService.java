@@ -6,7 +6,9 @@ import com.kyh.system.entity.User;
 import java.util.List;
 
 public interface ManageService {
-	 List<Staff> searchEmployees(int companyName, int jobName);
+	 List<Staff> searchEmployees(Integer companyName, Integer jobName);
+
+	 void saveStaff(Staff staff);
 
 }
 

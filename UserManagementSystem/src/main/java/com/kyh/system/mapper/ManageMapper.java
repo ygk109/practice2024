@@ -15,4 +15,6 @@ public interface ManageMapper {
 
 	List<Staff> findByCriteria(@Param("companyName") Integer companyName,
             @Param("jobName") Integer jobName);
+
+	void save(Staff staff);
 }

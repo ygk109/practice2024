@@ -20,10 +20,14 @@ public class ManageServiceImpl implements ManageService {
 	private ManageMapper manageMapper;
 
 	@Override
-	public List<Staff> searchEmployees(int companyName, int jobName) {
+	public List<Staff> searchEmployees(Integer companyName, Integer jobName) {
 	    return manageMapper.findByCriteria(companyName, jobName);
 	}
 
+	@Override
+    public void saveStaff(Staff staff) {
+        manageMapper.save(staff);
+    }
   
 
 }

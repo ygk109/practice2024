@@ -10,9 +10,9 @@ public class Staff {
 
     private int gender;
     
-    private int companyName;
+    private Integer companyName;
     
-    private int jobName;
+    private Integer jobName;
     
     private String startDate;
     
@@ -20,10 +20,6 @@ public class Staff {
 
 	public Integer getUserId() {
 		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
 	}
 
 	public String getFirstName() {
@@ -50,19 +46,19 @@ public class Staff {
 		this.gender = gender;
 	}
 
-	public int getCompanyName() {
+	public Integer getCompanyName() {
 		return companyName;
 	}
 
-	public void setCompanyName(int companyName) {
+	public void setCompanyName(Integer companyName) {
 		this.companyName = companyName;
 	}
 
-	public int getJobName() {
+	public Integer getJobName() {
 		return jobName;
 	}
 
-	public void setJobName(int jobName) {
+	public void setJobName(Integer jobName) {
 		this.jobName = jobName;
 	}
 
@@ -80,6 +76,10 @@ public class Staff {
 
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 
