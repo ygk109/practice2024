@@ -18,4 +18,9 @@
             #{jobName}, #{remarks}, #{osSkills}, #{itRemarks}, 
             NOW(), NOW());
     </insert>
+    
+    <select id="findAll" resultType="com.kyh.system.entity.Staff">
+    	SELECT *
+    	FROM syain_test;
+    </select>
 </mapper>

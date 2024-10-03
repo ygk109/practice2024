@@ -28,6 +28,12 @@ public class ManageServiceImpl implements ManageService {
     public void saveStaff(Staff staff) {
         manageMapper.save(staff);
     }
+	
+	@Override
+	public List<Staff> findAll() {
+		return manageMapper.findAll();
+		
+	}
   
 
 }

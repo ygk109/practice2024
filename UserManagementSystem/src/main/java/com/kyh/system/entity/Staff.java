@@ -7,8 +7,10 @@ public class Staff {
     private String firstName;
 
     private String lastName;
+    
+    private String employeeName;
 
-    private int gender;
+    private Integer gender;
     
     private Integer companyName;
     
@@ -20,6 +22,10 @@ public class Staff {
 
 	public Integer getUserId() {
 		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public String getFirstName() {
@@ -38,11 +44,19 @@ public class Staff {
 		this.lastName = lastName;
 	}
 
-	public int getGender() {
+	public String getEmployeeName() {
+		return employeeName;
+	}
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
+	public Integer getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
 
@@ -77,10 +91,5 @@ public class Staff {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
 
 }

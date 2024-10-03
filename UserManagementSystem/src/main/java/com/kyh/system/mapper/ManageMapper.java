@@ -17,4 +17,6 @@ public interface ManageMapper {
             @Param("jobName") Integer jobName);
 
 	void save(Staff staff);
+
+	List<Staff> findAll();
 }

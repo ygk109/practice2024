@@ -77,7 +77,7 @@
     <!-- 조건 검색 -->
     <div style="width: 1000px; height: 280px; padding: 0px 20px">
       <div class="ftitle">■検索条件</div>
-      <form id="content" method="get" action="./search">
+      <form id="content" method="get" action="/manage/search">
         <div class="fitem" style="margin: 10px 0px 10px 0px;">
             <label>所属会社</label>
             <select name="companyName" style="width: 177px; margin-left: 15px;">
@@ -112,7 +112,7 @@
       <!-- 사원 일람 -->
       <div class="ftitle">■社員一覧</div>
       <div class="unit" style="text-align: right">
-        <label>件数：</label>
+        <label>件数：<a></a></label>
         <label>件</label>
         <a href="./register">新規登録</a>
       </div>
@@ -132,17 +132,29 @@
           <!-- 검색 조건에 맞는 결과를 행 추가할 것 -->
           <tbody style="background-color: white">
             <tr th:each="employee : ${employees}">
-              <td th:text="${employee.companyName != null ? employee.companyName : 'N/A'}"></td>
-                <td th:text="${employee.firstName} + ' ' + ${employee.lastName}"></td>
-                <td th:text="${employee.gender}"></td>
-                <td th:text="${employee.jobName}"></td>
-                <td th:text="${employee.startDate}"></td>
-                <td th:text="${employee.endDate}"></td>
+                <td th:text="${employee?.companyName == 1 ? '회사 A' : '회사 B'}"></td>
+                <td th:text="${employee?.firstName} + ' ' + ${employee?.lastName}"></td>
+                <td th:text="${employee?.gender == 1 ? '남성' : '여성'}"></td>
+                <td th:text="${employee?.jobName}"></td>
+                <td th:text="${employee?.startDate}"></td>
+                <td th:text="${employee?.endDate}"></td>
                 <td>
                     <a href="./update">更新</a><br>
                     <a onclick="" id="tdelete" >削除</a>
                 </td>
             </tr>
+            <tr th:each="test : ${test}">
+              <td th:text="${test?.companyName}"></td>
+              <td th:text="${test?.firstName} + ' ' + ${employee?.lastName}"></td>
+              <td th:text="${test?.gender}"></td>
+              <td th:text="${test?.jobName}"></td>
+              <td th:text="${test?.startDate}"></td>
+              <td th:text="${test?.endDate}"></td>
+              <td>
+                  <a href="./update">更新</a><br>
+                  <a onclick="" id="tdelete" >削除</a>
+              </td>
+          </tr>
           </tbody>
         </table>
       </div>

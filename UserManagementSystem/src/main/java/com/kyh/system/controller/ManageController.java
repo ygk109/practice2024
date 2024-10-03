@@ -50,10 +50,23 @@ public class ManageController {
 	public String searchEmployees(@RequestParam(required = false) Integer companyName,
             @RequestParam(required = false) Integer jobName,
             Model model) {
-            // 직원 검색 시 직원 이름을 추가하여 검색
-            List<Staff> employees = manageService.searchEmployees(companyName, jobName);
+			List<Staff> employees= manageService.searchEmployees(companyName, jobName);
+           
+		    // 직원 검색 결과를 로그로 출력
+		    Logger logger = LoggerFactory.getLogger(ManageController.class);
+		    logger.info("Employees found: {}", employees);
+			
+			// 직원 검색 시 직원 이름을 추가하여 검색
             model.addAttribute("employees", employees);
-            System.out.println(employees);
+        
             return "/common/manage";
 	}
+	
+	@RequestMapping(value = "/test", method = {RequestMethod.GET, RequestMethod.POST})
+	public String searchTest(Model model) {
+		List<Staff> test = manageService.findAll();
+		model.addAttribute("test",test);
+		return "/common/manage";
+	}
+
 }

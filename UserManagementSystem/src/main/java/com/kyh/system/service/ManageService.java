@@ -10,5 +10,7 @@ public interface ManageService {
 
 	 void saveStaff(Staff staff);
 
+	 List<Staff> findAll();
+
 }
 
