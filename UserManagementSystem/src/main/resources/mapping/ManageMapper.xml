@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kyh.system.mapper.ManageMapper">
 
-	<select id="findByCriteria" resultType="com.kyh.system.entity.Staff">
+	<select id="findByCriteria" parameterType="com.kyh.system.entity.Staff" resultType="com.kyh.system.entity.Staff">
     	SELECT *
     	FROM syain_test
     	WHERE (SYOZOKU_KAISYA = #{companyName} OR #{companyName} IS NULL)
-     	AND (SYOKUGYO_KIND = #{jobName} OR #{jobName} IS NULL);
+     	AND (SYOKUGYO_KIND = #{jobName} OR #{jobName} IS NULL)
 	</select>
 
 	<insert id="save" parameterType="com.kyh.system.entity.Staff">
@@ -16,6 +16,11 @@
         VALUES (#{firstName}, #{lastName}, #{gender}, 
             #{companyName}, #{startDate}, #{endDate}, 
             #{jobName}, #{remarks}, #{osSkills}, #{itRemarks}, 
-            NOW(), NOW());
+            NOW(), NOW())
     </insert>
+    
+    <select id="findAll" parameterType="com.kyh.system.entity.Staff" resultType="com.kyh.system.entity.Staff">
+    	SELECT *
+    	FROM syain_test
+    </select>
 </mapper>
