@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kyh.system.mapper.ManageMapper">
-
-	<select id="findByCriteria" parameterType="com.kyh.system.entity.Staff" resultType="com.kyh.system.entity.Staff">
-    	SELECT *
-    	FROM syain_test
-    	WHERE (SYOZOKU_KAISYA = #{companyName} OR #{companyName} IS NULL)
-     	AND (SYOKUGYO_KIND = #{jobName} OR #{jobName} IS NULL)
+ <!-- <resultMap id="BaseResultMap" type="com.kyh.system.entity.Staff">
+    <id column="SYAIN_ID" jdbcType="INTEGER" property="syainId" />
+    <result column="FIRST_NAME_KANJI" jdbcType="VARCHAR" property="firstNameKanji" />
+    <result column="LAST_NAME_KANJI" jdbcType="VARCHAR" property="lastNameKanji" />
+    <result column="SEIBETU" jdbcType="INTEGER" property="seibetu" />
+    <result column="SYOZOKU_KAISYA" jdbcType="INTEGER" property="syozokuKaisya" />
+    <result column="NYUUSYA_DATE" javaType="java.util.Date" jdbcType="DATE" property="nyuusyaDate" />
+    <result column="TAISYA_DATE" javaType="java.util.Date" jdbcType="DATE" property="taisyaDate" />    
+    <result column="SYOKUGYO_KIND" jdbcType="INTEGER" property="syokugyoKind" />
+    <result column="KINYUKIKAN_CODE" jdbcType="VARCHAR" property="kinyukikanCode" />
+    <result column="KINYUKIKAN_NAME" jdbcType="VARCHAR" property="kinyukikanName" />    
+    <result column="SITEN_CODE" jdbcType="VARCHAR" property="sitenCode" />
+    <result column="SITEN_NAME" jdbcType="VARCHAR" property="sitenName" />
+    <result column="KOUZA_KIND" jdbcType="INTEGER" property="kouzaKind" />    
+    <result column="KOUZA_NUM" jdbcType="VARCHAR" property="kouzaNum" />
+    <result column="MEIGI_NAME" jdbcType="VARCHAR" property="meigiName" />
+    <result column="IT_OS" jdbcType="VARCHAR" property="itOs" />    
+    <result column="IT_BIKOU" jdbcType="VARCHAR" property="itBikou" />       
+  </resultMap> 	 -->
+  	<sql id="Base_Column_List">
+    SYAIN_ID, FIRST_NAME_KANJI, LAST_NAME_KANJI, SEIBETU, SYOZOKU_KAISYA, NYUUSYA_DATE, TAISYA_DATE, SYOKUGYO_KIND,
+    KINYUKIKAN_CODE, KINYUKIKAN_NAME, SITEN_CODE, SITEN_NAME, KOUZA_KIND, KOUZA_NUM, MEIGI_NAME, IT_OS, IT_BIKOU
+    </sql>
+	
+	<select id="findByCriteria" resultType="com.kyh.system.entity.Staff">
+    	SELECT
+    	<include refid="Base_Column_List"></include>
+    	FROM SYAIN_NEW
+    	WHERE LAST_NAME_KANJI = #{lastNameKanji,jdbcType=VARCHAR}
 	</select>
 
-	<insert id="save" parameterType="com.kyh.system.entity.Staff">
-        INSERT INTO syain_test (FIRST_NAME_KANJI, LAST_NAME_KANJI, SEIBETU, 
-            SYOZOKU_KAISYA, NYUUSYA_DATE, TAISYA_DATE, SYOKUGYO_KIND, 
-            BIKOU, IT_OS, IT_BIKOU, TOUROKUBI, KOUSINNBI)
-        VALUES (#{firstName}, #{lastName}, #{gender}, 
-            #{companyName}, #{startDate}, #{endDate}, 
-            #{jobName}, #{remarks}, #{osSkills}, #{itRemarks}, 
-            NOW(), NOW())
-    </insert>
-    
     <select id="findAll" parameterType="com.kyh.system.entity.Staff" resultType="com.kyh.system.entity.Staff">
-    	SELECT *
-    	FROM syain_test
+    	SELECT *    	
+    	FROM syain_new
     </select>
 </mapper>
