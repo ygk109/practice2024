@@ -1,13 +1,10 @@
 package com.kyh.system.service;
 
-import com.kyh.system.entity.Staff;
-
 import java.util.List;
+
+import com.kyh.system.entity.Staff;
 
 public interface ManageService {
 	 List<Staff> searchEmployees(String lastNameKanji);
-
-	 List<Staff> findAll();
-
 }
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:float="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8" />
@@ -11,35 +11,28 @@
       border-collapse: collapse;
       font-size: 18px;
     }
-    label{
+    label {
       font-size: 16px;
     }
-    button{
+    button {
       border: 0;
-     line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1rem;
-    text-align: center;
-    color: #fff;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-     background-color: rgb(0, 180, 220);
-     background-image: linear-gradient(
-    to top left,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2) 30%,
-    rgba(0, 0, 0, 0)
-  );
-  box-shadow:
-    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+      line-height: 2.5;
+      padding: 0 20px;
+      font-size: 1rem;
+      text-align: center;
+      color: #fff;
+      text-shadow: 1px 1px 1px #000;
+      border-radius: 10px;
+      background-color: rgb(0, 180, 220);
+      background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+      box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
     }
-    .tap:hover{
-        background-color: red;
-        color: white;
+    .tap:hover {
+      background-color: red;
+      color: white;
     }
-    .search:hover{
-        background-color: aqua;
+    .search:hover {
+      background-color: aqua;
     }
     .ftitle {
       text-align: left;
@@ -51,122 +44,118 @@
   </style>
 
   <body>
-<!-- 메뉴명 -->
+    <!-- 메뉴명 -->
+    <form id="content" method="get" action="/manage/search">
       <div class="main">
-        <div>      
-            <a style="font-size: 20px">株式会社ブライトスター</a>
-        </div>
-        
-        <div style="margin-left: 380px">
-            <a style="font-size: 35px">社内統合管理システム</a>
-        </div>
-        
         <div>
-        <label style="font-size: 12px">BRIGHT STAR CO.LTD.</label>  
+          <a style="font-size: 20px">株式会社ブライトスター</a>
         </div>
 
-        <div style="margin: 10px 0px 10px 0px; font-size: 24px;">
-          <a class="tap" href="./manage.html" style="font-size: 16px;">社員管理 </a>
+        <div style="margin-left: 380px">
+          <a style="font-size: 35px">社内統合管理システム</a>
+        </div>
+
+        <div>
+          <label style="font-size: 12px">BRIGHT STAR CO.LTD.</label>
+        </div>
+
+        <div style="margin: 10px 0px 10px 0px; font-size: 24px">
+          <a class="tap" href="./manage.html" style="font-size: 16px">社員管理 </a>
         </div>
       </div>
-    </div>
 
-    <!-- 사원관리 -->
-    <div style="background: linear-gradient(gray,white, gray); border-radius: 0.2em; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px"><a style="color: blue">■ </a>社員管理</div>
+      <!-- 사원관리 -->
+      <div style="background: linear-gradient(gray, white, gray); border-radius: 0.2em; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px">
+        <a style="color: blue">■ </a>社員管理
+      </div>
 
-    <!-- 조건 검색 -->
-    <div style="width: 1000px; height: 280px; padding: 0px 20px">
-      <div class="ftitle">■検索条件</div>
-      <form id="content" method="get" action="/manage/search">
-        <div class="fitem" style="margin: 10px 0px 10px 0px;">
-            <label>所属会社</label>
-            <select name="syozokuKaisya" style="width: 177px; margin-left: 15px;">
-                <option value="0">全て</option>
-                <option value="1">株式会社ブライトスター</option>
-                <option value="2">株式会社トップクラウド</option>
-            </select>
-    
-            <label style="margin-left: 15px;">社員名</label>
-            <input name="lastNameKanji" style="margin-left: 15px;" type="text" required="true" />
+      <!-- 조건 검색 -->
+      <div style="width: 1000px; height: 280px; padding: 0px 20px">
+        <div class="ftitle">■検索条件</div>
+        <div class="fitem" style="margin: 10px 0px 10px 0px">
+          <label>所属会社</label>
+          <select name="syozokuKaisya" style="width: 177px; margin-left: 15px">
+            <option value="0">全て</option>
+            <option value="1">株式会社ブライトスター</option>
+            <option value="2">株式会社トップクラウド</option>
+          </select>
+
+          <label style="margin-left: 15px">社員名</label>
+          <input name="lastNameKanji" style="margin-left: 15px" type="text" required="true" />
         </div>
-        <div style="margin: 10px 0px 10px 0px;">
-            <label>職業種類</label>
-            <select name="syokugyoKind" style="width: 177px;  margin-left: 15px;">
-                <option value="1">役員</option>
-                <option value="2">総務</option>
-                <option value="3">IT営業</option>
-                <option value="4" selected>ITエンジニア</option>
-                <option value="5">不動産スタッフ</option>
-                <option value="6">個人事業主</option>
-            </select>
-            <label style="margin-left: 15px;">在職</label>
-            <input name="isEmployed" id="checkbox1" style="margin-left: 15px;" type="checkbox" checked />
-            <label style="margin-left: 15px;">非在職</label>
-            <input name="isNotEmployed" id="checkbox2" style="margin-left: 15px;" type="checkbox" />
+        <div style="margin: 10px 0px 10px 0px">
+          <label>職業種類</label>
+          <select name="syokugyoKind" style="width: 177px; margin-left: 15px">
+            <option value="1">役員</option>
+            <option value="2">総務</option>
+            <option value="3">IT営業</option>
+            <option value="4" selected="selected">ITエンジニア</option>
+            <option value="5">不動産スタッフ</option>
+            <option value="6">個人事業主</option>
+          </select>
+          <label style="margin-left: 15px">在職</label>
+          <input id="checkbox1" style="margin-left: 15px" type="checkbox" checked="checked" />
+          <label style="margin-left: 15px">非在職</label>
+          <input id="checkbox2" style="margin-left: 15px" type="checkbox" />
         </div>
         <div style="margin: 10px 0 10px 0">
-            <button id="searchButton" class="search" type="submit" style="width: 150px; height: 35px;">検　索</button>
+          <button type="submit" id="searchButton" class="search" style="width: 150px; height: 35px">検 索</button>
         </div>
-    </form>
 
-      <!-- 사원 일람 -->
-      <div class="ftitle">■社員一覧</div>
-      <div class="unit" style="text-align: right">
-        <label>件数：<a></a></label>
-        <label>件</label>
-        <a href="./register">新規登録</a>
-      </div>
-      <div class="dtable">
-        <table style="width: 1000px">
-          <thead style="background-color: aqua">
-            <tr>
-              <th>所属会社</th>
-              <th>社員名</th>
-              <th>性別</th>
-              <th>職業種類</th>
-              <th>入社日</th>
-              <th>退社日</th>
-              <th>編集</th>
-            </tr>
-          </thead>
-          <!-- 검색 조건에 맞는 결과를 행 추가할 것 -->
-          <tbody style="background-color: white">
-            <tr th:each="employee : ${employees}">
+        <!-- 사원 일람 -->
+        <div class="ftitle">■社員一覧</div>
+        <div class="unit" style="text-align: right">
+          <label>件数：<a></a></label>
+          <label>件</label>
+          <a href="./register">新規登録</a>
+        </div>
+        <div class="dtable">
+          <table style="width: 1000px">
+            <thead style="background-color: aqua">
+              <tr>
+                <th>所属会社</th>
+                <th>社員名</th>
+                <th>性別</th>
+                <th>職業種類</th>
+                <th>入社日</th>
+                <th>退社日</th>
+                <th>編集</th>
+              </tr>
+            </thead>
+            <!-- 검색 조건에 맞는 결과를 행 추가할 것 -->
+            <tbody style="background-color: white">
+              <tr th:each="employee : ${employees}">
                 <td th:text="${employee.syozokuKaisya == 1 ? '株式会社ブライトスター' : '株式会社トップクラウド' }"></td>
-                <td th:text="${employee.firstNameKanji} 
+                <td
+                  th:text="${employee.firstNameKanji} 
                               + ' '
-                              + ${employee.lastNameKanji}"></td>
-                <td th:text="${employee.seibetu == 1 ? '男' 
-                              : (employee.seibetu == 2 ? '여성' : 'error')}"></td>
-                <td th:text="${employee.syokugyoKind == 1 ? '役員'
+                              + ${employee.lastNameKanji}"
+                ></td>
+                <td
+                  th:text="${employee.seibetu == 1 ? '男' 
+                              : (employee.seibetu == 2 ? '여성' : 'error')}"
+                ></td>
+                <td
+                  th:text="${employee.syokugyoKind == 1 ? '役員'
                               : employee.syokugyoKind == 2 ? '総務'
                               : employee.syokugyoKind == 3 ? 'IT営業'
                               : employee.syokugyoKind == 4 ? 'ITエンジニア'
                               : employee.syokugyoKind == 5 ? '不動産スタッフ'
-                              : (employee.syokugyoKind == 6? '個人事業主' : 'error')}"></td>
+                              : (employee.syokugyoKind == 6? '個人事業主' : 'error')}"
+                ></td>
 
-                <td th:text="${employee.nyuushyaDate}"></td>
+                <td th:text="${employee.nyuusyaDate}"></td>
                 <td th:text="${employee.taisyaDate}"></td>
                 <td>
-                    <a href="./update">更新</a><br>
-                    <a onclick="" id="tdelete" >削除</a>
+                  <a href="./update">更新</a><br />
+                  <a onclick="" id="tdelete">削除</a>
                 </td>
-            </tr>
-          
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-    <script>
-        document.getElementById('searchButton').addEventListener('click', function(){
-            const checkbox1= document.getElementById('checkbox1')
-            const checkbox2= document.getElementById('checkbox2')
-            //체크박스 모두 선택 안되어 있다면 경고창 노출
-            if(!checkbox1.checked && !checkbox2.checked){
-                alert('在籍と非在籍がいずれにしても、１つのチェックが必須です。');
-            }
-        })
-
-    </script>
+    </form>
+    <script></script>
   </body>
 </html>

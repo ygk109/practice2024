@@ -2,8 +2,6 @@ package com.kyh.system.controller;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,20 +37,13 @@ public class ManageController {
 	@RequestMapping(value = "/search", method = { RequestMethod.POST, RequestMethod.GET })
 	public String searchEmployees(@RequestParam String lastNameKanji,
             Model model) {
-			Staff staff = new Staff();
-			staff.setLastNameKanji(lastNameKanji);
-			System.out.println(lastNameKanji);
-			List<Staff> employees = manageService.searchEmployees(lastNameKanji);
-		    
-			// 직원 검색 결과를 로그로 출력
-		    Logger logger = LoggerFactory.getLogger(ManageController.class);
-		    logger.info("Employees found: {}", employees);
 			
+			System.out.println("입력 이름:" + lastNameKanji);
+			List<Staff> employees = manageService.searchEmployees(lastNameKanji);
 			// 직원 검색 시 직원 이름을 추가하여 검색
-            model.addAttribute("employees", employees);
-        
+			model.addAttribute("employees", employees);
+		    
             return "/common/manage";
 	}
-	
 
 }

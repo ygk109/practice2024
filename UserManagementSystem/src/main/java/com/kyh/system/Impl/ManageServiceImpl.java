@@ -3,13 +3,13 @@ package com.kyh.system.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.kyh.system.entity.Staff;
 import com.kyh.system.mapper.ManageMapper;
 import com.kyh.system.service.ManageService;
 
-@Service
+@Repository
 public class ManageServiceImpl implements ManageService {
 
 	@Autowired
@@ -20,11 +20,6 @@ public class ManageServiceImpl implements ManageService {
 	    return manageMapper.findByCriteria(lastNameKanji);
 	}
 
-	@Override
-	public List<Staff> findAll() {
-		return manageMapper.findAll();
-		
-	}
   
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kyh.system.mapper.ManageMapper">
- <!-- <resultMap id="BaseResultMap" type="com.kyh.system.entity.Staff">
+  <resultMap id="BaseResultMap" type="com.kyh.system.entity.Staff">
     <id column="SYAIN_ID" jdbcType="INTEGER" property="syainId" />
     <result column="FIRST_NAME_KANJI" jdbcType="VARCHAR" property="firstNameKanji" />
     <result column="LAST_NAME_KANJI" jdbcType="VARCHAR" property="lastNameKanji" />
@@ -19,21 +19,18 @@
     <result column="MEIGI_NAME" jdbcType="VARCHAR" property="meigiName" />
     <result column="IT_OS" jdbcType="VARCHAR" property="itOs" />    
     <result column="IT_BIKOU" jdbcType="VARCHAR" property="itBikou" />       
-  </resultMap> 	 -->
-  	<sql id="Base_Column_List">
+  </resultMap>
+  	
+  <sql id="Base_Column_List">
     SYAIN_ID, FIRST_NAME_KANJI, LAST_NAME_KANJI, SEIBETU, SYOZOKU_KAISYA, NYUUSYA_DATE, TAISYA_DATE, SYOKUGYO_KIND,
     KINYUKIKAN_CODE, KINYUKIKAN_NAME, SITEN_CODE, SITEN_NAME, KOUZA_KIND, KOUZA_NUM, MEIGI_NAME, IT_OS, IT_BIKOU
-    </sql>
+  </sql>
 	
-	<select id="findByCriteria" resultType="com.kyh.system.entity.Staff">
+	<select id="findByCriteria" resultMap="BaseResultMap">
     	SELECT
-    	<include refid="Base_Column_List"></include>
-    	FROM SYAIN_NEW
+    	<include refid="Base_Column_List"/>
+    	FROM syain_new
     	WHERE LAST_NAME_KANJI = #{lastNameKanji,jdbcType=VARCHAR}
 	</select>
 
-    <select id="findAll" parameterType="com.kyh.system.entity.Staff" resultType="com.kyh.system.entity.Staff">
-    	SELECT *    	
-    	FROM syain_new
-    </select>
 </mapper>

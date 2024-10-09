@@ -14,7 +14,7 @@ public class Staff {
 
 	private Integer syozokuKaisya;
 
-	private Date nyuushyaDate;
+	private Date nyuusyaDate;
 
 	private Date taisyaDate;
 
@@ -78,12 +78,12 @@ public class Staff {
 		this.syozokuKaisya = syozokuKaisya;
 	}
 
-	public Date getNyuushyaDate() {
-		return nyuushyaDate;
+	public Date getNyuusyaDate() {
+		return nyuusyaDate;
 	}
 
-	public void setNyuushyaDate(Date nyuushyaDate) {
-		this.nyuushyaDate = nyuushyaDate;
+	public void setNyuusyaDate(Date nyuusyaDate) {
+		this.nyuusyaDate = nyuusyaDate;
 	}
 
 	public Date getTaisyaDate() {
@@ -173,7 +173,6 @@ public class Staff {
 	public void setItBikou(String itBikou) {
 		this.itBikou = itBikou;
 	}
-
 
 
 }
