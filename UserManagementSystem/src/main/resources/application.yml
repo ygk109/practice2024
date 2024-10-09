@@ -5,7 +5,7 @@ server:
 #DBについての情報はDataSourceConfig.javaにて設定を行う
 mybatis:
   mapper-locations: classpath:mapping/*.xml
-  type-aliases-package: com.winter.model #체크 필요
+  type-aliases-package: com.kyh.system.entity  # 타입 별칭이 정의된 패키지 *체크 com.winter.model com.kyh.system.entity
 
 #pagehelper
 pagehelper:
@@ -13,7 +13,11 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
-    
+
 spring:
-  main:
-    allow-circular-references: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: testuser
+    password: test
+    driver-class-name: com.mysql.cj.jdbc.Driver
+ 
