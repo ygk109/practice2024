@@ -30,7 +30,24 @@
     	SELECT
     	<include refid="Base_Column_List"/>
     	FROM syain_new
-    	WHERE LAST_NAME_KANJI = #{lastNameKanji,jdbcType=VARCHAR}
+    	WHERE LAST_NAME_KANJI LIKE CONCAT('%', #{lastNameKanji,jdbcType=VARCHAR}, '%')
 	</select>
+	
+	<select id="countDb" resultType="int">
+    	SELECT
+    	COUNT(*)
+    	FROM syain_new
+    	WHERE LAST_NAME_KANJI LIKE CONCAT('%', #{lastNameKanji,jdbcType=VARCHAR}, '%')
+	</select>
+	
+	<insert id="registerDb" parameterType="com.kyh.system.entity.Staff">
+	    INSERT INTO syain_new
+	    (SYAIN_ID, FIRST_NAME_KANJI, LAST_NAME_KANJI, SEIBETU, SYOZOKU_KAISYA, NYUUSYA_DATE, TAISYA_DATE, SYOKUGYO_KIND,
+    KINYUKIKAN_CODE, KINYUKIKAN_NAME, SITEN_CODE, SITEN_NAME, KOUZA_KIND, KOUZA_NUM, MEIGI_NAME, IT_OS, IT_BIKOU)
+	    VALUES
+	    (#{syainId}, #{firstNameKanji}, #{lastNameKanji}, #{seibetu}, #{syozokuKaisya}, #{nyuusyaDate}, #{taisyaDate}, 
+	     #{syokugyoKind}, #{kinyukikanCode}, #{kinyukikanName}, #{sitenCode}, #{sitenName}, #{kouzaKind}, 
+	     #{kouzaNum}, #{meigiName}, #{itOs}, #{itBikou})
+	</insert>
 
 </mapper>

@@ -105,7 +105,7 @@
         <!-- 사원 일람 -->
         <div class="ftitle">■社員一覧</div>
         <div class="unit" style="text-align: right">
-          <label>件数：<a></a></label>
+          <label>件数：<a th:text="${count}"></a></label>
           <label>件</label>
           <a href="./register">新規登録</a>
         </div>
@@ -133,7 +133,7 @@
                 ></td>
                 <td
                   th:text="${employee.seibetu == 1 ? '男' 
-                              : (employee.seibetu == 2 ? '여성' : 'error')}"
+                              : (employee.seibetu == 2 ? '女' : 'error')}"
                 ></td>
                 <td
                   th:text="${employee.syokugyoKind == 1 ? '役員'
@@ -144,8 +144,8 @@
                               : (employee.syokugyoKind == 6? '個人事業主' : 'error')}"
                 ></td>
 
-                <td th:text="${employee.nyuusyaDate}"></td>
-                <td th:text="${employee.taisyaDate}"></td>
+                <td th:text="${#dates.format(employee.nyuusyaDate, 'yyyy-mm-dd')}"></td>
+                <td th:text="${#dates.format(employee.taisyaDate, 'yyyy-mm-dd')}"></td>
                 <td>
                   <a href="./update">更新</a><br />
                   <a onclick="" id="tdelete">削除</a>

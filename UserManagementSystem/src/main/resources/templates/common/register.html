@@ -1,357 +1,369 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:float="http://www.w3.org/1999/xhtml">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="css/bank_auto.css" />
     <script src="https://zipaddr.github.io/bankauto0.js" charset="UTF-8"></script>
     <style>
-        table,
-        td,
-        th {
-            width: 1000px;
-            border: 1px solid black;
-            border-collapse: collapse;
-            font-size: 16px;
-        }
+      table,
+      td,
+      th {
+        width: 1000px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: 16px;
+      }
 
-        label {
-            font-size: 16px;
-        }
+      label {
+        font-size: 16px;
+      }
 
-        button {
-            border: 0;
-            line-height: 2.5;
-            font-size: 1rem;
-            padding: 0 20px;
-            text-align: center;
-            color: #fff;
-            text-shadow: 1px 1px 1px #000;
-            border-radius: 10px;
-            background-color: rgb(0, 180, 220);
-            background-image: linear-gradient(
-                to top left,
-                rgba(0, 0, 0, 0.2),
-                rgba(0, 0, 0, 0.2) 30%,
-                rgba(0, 0, 0, 0)
-            );
-            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-            inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-        }
+      button {
+        border: 0;
+        line-height: 2.5;
+        font-size: 1rem;
+        padding: 0 20px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 1px 1px 1px #000;
+        border-radius: 10px;
+        background-color: rgb(0, 180, 220);
+        background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+        box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+      }
 
-        .search:hover {
-            background-color: aqua;
-        }
+      .search:hover {
+        background-color: aqua;
+      }
 
-        .ftitle {
-            text-align: left;
-            margin: 10px 0 0 0;
-            font-size: 20px;
-        }
+      .ftitle {
+        text-align: left;
+        margin: 10px 0 0 0;
+        font-size: 20px;
+      }
 
-        .fitem {
-            text-align: left;
-        }
+      .fitem {
+        text-align: left;
+      }
 
-        .info label {
-            width: 1000px;
-        }
+      .info label {
+        width: 1000px;
+      }
 
-        .dtable select {
-            border: none;
-        }
+      .dtable select {
+        border: none;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 메뉴명 -->
-    <div class="main">
+    <form method="get" action="/manage/register/form">
+      <div class="main">
         <div>
-            <a style="font-size: 20px">株式会社ブライトスター</a>
+          <a style="font-size: 20px">株式会社ブライトスター</a>
         </div>
 
         <div style="margin-left: 380px">
-            <a style="font-size: 35px">社内統合管理システム</a>
+          <a style="font-size: 35px">社内統合管理システム</a>
         </div>
 
         <div>
-            <label style="font-size: 12px">BRIGHT STAR CO.LTD.</label>
+          <label style="font-size: 12px">BRIGHT STAR CO.LTD.</label>
         </div>
 
         <!-- 사원등록 -->
-        <div style="background: linear-gradient(gray,white, gray); border-radius: 0.2em; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px">
-            <a style="color: blue">■ </a>社員登録
+        <div style="background: linear-gradient(gray, white, gray); border-radius: 0.2em; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px">
+          <a style="color: blue">■ </a>社員登録
         </div>
 
         <!-- 기본정보 -->
-        <form method="post" action="/manage/register">
-            <div style="width: 1000px; height: 280px; padding: 0px 20px">
-                <div class="ftitle">基本情報</div>
-                <hr style="border-color: aqua;">
-                <div class="info">
-                    <div class="fitem" style="margin: 10px 0px 10px 0px;">
-                        <label>社員コード:</label>
-                        <input type="text" id="userId" pattern="^[a-zA-Z0-9]{1,10}" maxlength="10" name="userId" style="margin-left: 6%; width:120px" required="true" />
-                    </div>
-                    <div>
-                        <label>社員名（漢字）</label>
-                        <a>姓</a><input type="text" maxlength="15" id="firstName" value="" name="firstName" style="margin-left: 15px; width:120px" required="true" />
-                        <a>名</a><input type="text" maxlength="15" id="lastName" value="" name="lastName" style="margin-left: 15px; width:120px" required="true" />
-                        <a>必須</a>
-                    </div>
-                    <div>
-                        <label>性別</label>
-                        <input type="radio" name="gender" value="1" style="margin-left: 8%;" checked /><a>男</a>
-                        <input type="radio" name="gender" value="2" /><a>女</a>
-                    </div>
-                    <div class="ftitle">会社関連情報</div>
-                    <hr style="border-color: aqua;">
-                    <div>
-                        <div>
-                            <label>所属会社</label>
-                            <select name="companyName" style="margin-left: 5%;">
-                                <option value="1">株式会社ブライトスター</option>
-                                <option value="2">株式会社トップクラウド</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>入社日</label>
-                            <input type="date" name="startDate" id="currentDate" style="margin-left: 6.5%;" />
-                        </div>
-                        <div>
-                            <label>退社日</label>
-                            <input type="date" name="endDate" id="currentDate2" style="margin-left: 6.5%;" />
-                        </div>
-                        <div>
-                            <label>職業種類</label>
-                            <select name="jobName" style="margin-left: 5%;">
-                                <option value="1">役員</option>
-                                <option value="2">総務</option>
-                                <option value="3">IT営業</option>
-                                <option value="4" selected>ITエンジニア</option>
-                                <option value="5">不動産スタッフ</option>
-                                <option value="6">個人事業主</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 급여관련 정보 -->
-                <div class="ftitle">給与関連情報</div>
-                <hr style="border-color: aqua;">
-                <div style="text-align: left">
-                    <a>給与振込口座</a>
-                </div>
-                <div class="dtable">
-                    <table>
-                        <thead style="background-color: aqua">
-                            <tr>
-                                <th>金融機関コード</th>
-                                <th>金融機関名</th>
-                                <th>支店名コード</th>
-                                <th>支店名</th>
-                                <th>口座種類</th>
-                                <th>口座番号</th>
-                                <th>名義人</th>
-                            </tr>
-                        </thead>
-                        <tbody style="background-color: white">
-                            <tr>
-                                <td><input type="text" name="bank_code2" id="bank_code2" class="form_txt-short" placeholder="例: 0001" value="" style="position: relative; border:none;" maxlength="10"></td>
-                                <td><span id="bank_name2" maxlength="50" ></span></td>
-
-                                <td><input type="text" name="branch_code2" id="branch_code2" class="form_txt-short" placeholder="例: 310" value="" style="position: relative;border:none;"maxlength="10"></td>
-                                <td><span id="branch_name2" maxlength="50" ></span></td>
-
-                                <td>普通</td>
-                                <td><input type="text" maxlength="10" value="" style="border:none"></td>
-                                <td><input type="text" maxlength="50" value="" style="border:none"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="ftitle">技術経験</div>
-                    <hr style="border-color: aqua;">
-                    <table>
-                        <tr>
-                            <td rowspan="3">OS</td>
-                            <td>DOS</td>
-                            <td>
-                                <select name="osDos">
-                                    <option selected="selected" disabled="disabled" display="none"></option>
-                                    <option>◎</option>
-                                    <option>○</option>
-                                    <option>△</option>
-                                </select>
-                            </td>
-                            <td>Windows</td>
-                            <td>
-                                <select name="osWindows">
-                                  <option selected="selected" disabled="disabled" display="none"></option>
-                                    <option>◎</option>
-                                    <option>○</option>
-                                    <option>△</option>
-                                </select>
-                            </td>
-                            <td>Unix</td>
-                            <td>
-                                <select name="osUnix">
-                                  <option selected="selected" disabled="disabled" display="none"></option>
-                                    <option>◎</option>
-                                    <option>○</option>
-                                    <option>△</option>
-                                </select>
-                            </td>
-                            <td>Linux</td>
-                            <td>
-                                <select name="osLinux">
-                                  <option selected="selected" disabled="disabled" display="none"></option>
-                                    <option>◎</option>
-                                    <option>○</option>
-                                    <option>△</option>
-                                </select>
-                            </td>
-                            <td>andriod</td>
-                            <td>
-                                <select name="osAndroid">
-                                  <option selected="selected" disabled="disabled" display="none"></option>
-                                    <option>◎</option>
-                                    <option>○</option>
-                                    <option>△</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>IOS</td>
-                            <td>
-                                <select name="osIos">
-                                  <option selected="selected" disabled="disabled" display="none"></option>
-                                    <option>◎</option>
-                                    <option>○</option>
-                                    <option>△</option>
-                                </select>
-                            </td>
-                            <td>AWS</td>
-                            <td>
-                                <select name="osAWS">
-                                  <option selected="selected" disabled="disabled" display="none"></option>
-                                    <option>◎</option>
-                                    <option>○</option>
-                                    <option>△</option>
-                                </select>
-                            </td>
-                            <td>SAP</td>
-                            <td>
-                                <select name="osSAP">
-                                  <option selected="selected" disabled="disabled" display="none"></option>
-                                    <option>◎</option>
-                                    <option>○</option>
-                                    <option>△</option>
-                                </select>
-                            </td>
-                            <td>Salesforce</td>
-                            <td>
-                                <select name="osSalesforce">
-                                  <option selected="selected" disabled="disabled" display="none"></option>
-                                    <option>◎</option>
-                                    <option>○</option>
-                                    <option>△</option>
-                                </select>
-                            </td>
-                            <td>Cosminexus</td>
-                            <td>
-                                <select name="osCosminexus">
-                                  <option selected="selected" disabled="disabled" display="none"></option>
-                                    <option>◎</option>
-                                    <option>○</option>
-                                    <option>△</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                          <td>docker</td>
-                          <td>
-                              <select name="osdocker">
-                                <option selected="selected" disabled="disabled" display="none"></option>
-                                  <option>◎</option>
-                                  <option>○</option>
-                                  <option>△</option>
-                              </select>
-                          </td>
-                          <td>kubernetes</td>
-                          <td>
-                              <select name="oskubernetes">
-                                <option selected="selected" disabled="disabled" display="none"></option>
-                                  <option>◎</option>
-                                  <option>○</option>
-                                  <option>△</option>
-                              </select>
-                          </td>
-                          <td>containerd</td>
-                          <td>
-                              <select name="oscontainerd">
-                                <option selected="selected" disabled="disabled" display="none"></option>
-                                  <option>◎</option>
-                                  <option>○</option>
-                                  <option>△</option>
-                              </select>
-                          </td>
-                          <td>azure</td>
-                          <td>
-                              <select name="osAzure">
-                                <option selected="selected" disabled="disabled" display="none"></option>
-                                  <option>◎</option>
-                                  <option>○</option>
-                                  <option>△</option>
-                              </select>
-                          </td>
-                        </tr>
-                    </table>
-                    <div class="ftitle" style="background-color: aqua; width: 50%; border-style:solid; border-width: 1px 1px 0 1px;">備考及び自己アピール</div>
-                    <textarea name="note" maxlength="1024" style="width: 100%; height: 100px;"></textarea>
-                    </div>
-
-                <div style="text-align: center;">
-                    <button class="search" id="searchButton" type="submit" style="width: 150px; height: 35px; margin-top: 15px;">登 録</button>
-                </div>
+        <div style="width: 1000px; height: 280px; padding: 0px 20px">
+          <div class="ftitle">基本情報</div>
+          <hr style="border-color: aqua" />
+          <div class="info">
+            <div class="fitem" style="margin: 10px 0px 10px 0px">
+              <label>社員コード:</label>
+              <input name="syainId" type="text" id="userId" pattern="^[a-zA-Z0-9]{1,10}" maxlength="10" style="margin-left: 6%; width: 120px" required="true" />
             </div>
-        </form>
-    </div>
-</body>
-  <!-- 날짜 변환 스크립트 -->
-  <script>
-    document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
-    document.getElementById('currentDate2').value = new Date().toISOString().substring(0, 10);
+            <div>
+              <label>社員名（漢字）</label>
+              <a>姓</a
+              ><input name="firstNameKanji" type="text" maxlength="15" id="firstName" value="" style="margin-left: 15px; width: 120px" required="true" />
+              <a>名</a><input name="lastNameKanji" type="text" maxlength="15" id="lastName" value="" style="margin-left: 15px; width: 120px" required="true" />
+              <a>必須</a>
+            </div>
+            <div>
+              <label>性別</label>
+              <input name="seibetu" type="radio" value="1" style="margin-left: 8%" checked="checked" /><a>男</a>
+              <input name="seibetu" type="radio" value="2" /><a>女</a>
+            </div>
+            <div class="ftitle">会社関連情報</div>
+            <hr style="border-color: aqua" />
+            <div>
+              <div>
+                <label>所属会社</label>
+                <select name="syozokuKaisya" style="margin-left: 5%">
+                  <option value="1">株式会社ブライトスター</option>
+                  <option value="2">株式会社トップクラウド</option>
+                </select>
+              </div>
+              <div>
+                <label>入社日</label>
+                <input type="date" name="nyuusyaDate" id="currentDate" style="margin-left: 6.5%" />
+              </div>
+              <div>
+                <label>退社日</label>
+                <input type="date" name="taisyaDate" id="currentDate2" style="margin-left: 6.5%" />
+              </div>
+              <div>
+                <label>職業種類</label>
+                <select name="syokugyoKind" style="margin-left: 5%">
+                  <option value="1">役員</option>
+                  <option value="2">総務</option>
+                  <option value="3">IT営業</option>
+                  <option value="4" selected="selected">ITエンジニア</option>
+                  <option value="5">不動産スタッフ</option>
+                  <option value="6">個人事業主</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    document.getElementById('searchButton').addEventListener('click',function(){
-      const pattern = "^[a-zA-Z0-9]{1,10}";
-      const userid = document.getElementById('userId').value;
-      const firstname = document.getElementById('firstName').value;
-      const lastname = document.getElementById('lastName').value;
-      if(userid != pattern){
-        alert('社員コードは英大小文字と数字で入力してください。');
-      }
-      
-      if(userid == ""){
-        alert('社員コードを入力してください。');
-      }
+        <!-- 급여관련 정보 -->
+        <div class="ftitle">給与関連情報</div>
+        <hr style="border-color: aqua" />
+        <div style="text-align: left">
+          <a>給与振込口座</a>
+        </div>
+        <div class="dtable">
+          <table>
+            <thead style="background-color: aqua">
+              <tr>
+                <th>金融機関コード</th>
+                <th>金融機関名</th>
+                <th>支店名コード</th>
+                <th>支店名</th>
+                <th>口座種類</th>
+                <th>口座番号</th>
+                <th>名義人</th>
+              </tr>
+            </thead>
+            <tbody style="background-color: white">
+              <tr>
+                <td>
+                  <input
+                    name="kinyukikanCode"
+                    type="text"
+                    id="bank_code2"
+                    class="form_txt-short"
+                    placeholder="例: 0001"
+                    value=""
+                    style="position: relative; border: none"
+                    maxlength="10"
+                  />
+                </td>
+                <td><input name="kinyukikanName" id="bank_name2" maxlength="50" value=""  style="position: relative; border: none"></input></td>
 
-      if(userid.length > 15){
-        alert('社員コードは 15字 以下で入力してください。');
-      }
+                <td>
+                  <input
+                    type="text"
+                    name="sitenCode"
+                    id="branch_code2"
+                    class="form_txt-short"
+                    placeholder="例: 310"
+                    value=""
+                    style="position: relative; border: none"
+                    maxlength="10"
+                  />
+                </td>
+                <td><span name="sitenName" id="branch_name2" maxlength="50"  value="" style="position: relative; border: none"></span></td>
 
-      if(firstname == ""){
-        alert('姓を入力してください。');
-      }
+                <td name="kouzaKind" value="普通">普通</td>
+                <span><span name="kouzaNum" type="text" maxlength="10" value="" style="border: none" /></span></td>
+                <td><input name="meigiName" type="text" maxlength="50" value="" style="border: none" /></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="ftitle">技術経験</div>
+          <hr style="border-color: aqua" />
+          <table>
+            <tr>
+              <td rowspan="3">OS</td>
+              <td>DOS</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>Windows</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>Unix</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>Linux</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>andriod</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+            </tr>
 
-      if(lastname == ""){
-        alert('名を入力してください。');
-      }
+            <tr>
+              <td>IOS</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>AWS</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>SAP</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>Salesforce</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>Cosminexus</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>docker</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>kubernetes</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>containerd</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+              <td>azure</td>
+              <td>
+                <select name="itOs">
+                  <option selected="selected" disabled="disabled" display="none"></option>
+                  <option>◎</option>
+                  <option>○</option>
+                  <option>△</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+          <div class="ftitle" style="background-color: aqua; width: 50%; border-style: solid; border-width: 1px 1px 0 1px">備考及び自己アピール</div>
+          <textarea name="itBikou" maxlength="1024" style="width: 100%; height: 100px"></textarea>
+        </div>
 
+        <div style="text-align: center">
+          <button class="search" id="searchButton" type="submit" style="width: 150px; height: 35px; margin-top: 15px">登 録</button>
+        </div>
+      </div>
+    </form>
+    <!-- 날짜 변환 스크립트 -->
+    <script>
+      document.getElementById("currentDate").value = new Date().toISOString().substring(0, 10);
+      document.getElementById("currentDate2").value = new Date().toISOString().substring(0, 10);
 
-      else{
-        return true;
-      }
-    });
+      document.getElementById("searchButton").addEventListener("click", function () {
+        const pattern = "^[a-zA-Z0-9]{1,10}";
+        const userid = document.getElementById("userId").value;
+        const firstname = document.getElementById("firstName").value;
+        const lastname = document.getElementById("lastName").value;
+        // if (userid != pattern) {
+        //   alert("社員コードは英大小文字と数字で入力してください。");
+        // }
 
-  </script>
-</body>
+        if (userid == "") {
+          alert("社員コードを入力してください。");
+        }
+
+        if (userid.length > 15) {
+          alert("社員コードは 15字 以下で入力してください。");
+        }
+
+        if (firstname == "") {
+          alert("姓を入力してください。");
+        }
+
+        if (lastname == "") {
+          alert("名を入力してください。");
+        } else {
+          return true;
+        }
+      });
+    </script>
+  </body>
 </html>
