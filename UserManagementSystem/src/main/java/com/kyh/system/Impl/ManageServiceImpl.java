@@ -14,11 +14,16 @@ public class ManageServiceImpl implements ManageService {
 
 	@Autowired
 	private ManageMapper manageMapper;
-
+	//검색 관련 service
 	@Override
 	public List<Staff> searchEmployees(String lastNameKanji) {
 	    return manageMapper.findByCriteria(lastNameKanji);
 	}
+	@Override
+	public int count(String lastNameKanji) {
+		return manageMapper.countDb(lastNameKanji);
+	}
+	//등록 관련 service
 	@Override
 	public void registerResult(
 			Integer syainId,
@@ -38,9 +43,8 @@ public class ManageServiceImpl implements ManageService {
 			String meigiName,
 			String itOs,
 			String itBikou){
-		}
-	@Override
-	public int count(String lastNameKanji) {
-		return manageMapper.countDb(lastNameKanji);
+			manageMapper.registerDb(syainId, firstNameKanji, lastNameKanji, seibetu, syozokuKaisya, nyuusyaDate, taisyaDate, syokugyoKind, kinyukikanCode, kinyukikanName, sitenCode, sitenName, kouzaKind, kouzaNum, meigiName, itOs, itBikou);;
 	}
+	
+
 }

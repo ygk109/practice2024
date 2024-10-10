@@ -124,7 +124,7 @@
             </thead>
             <!-- 검색 조건에 맞는 결과를 행 추가할 것 -->
             <tbody style="background-color: white">
-              <tr th:each="employee : ${employees}">
+              <tr th:each="employee : ${employees}" style="text-align: center">
                 <td th:text="${employee.syozokuKaisya == 1 ? '株式会社ブライトスター' : '株式会社トップクラウド' }"></td>
                 <td
                   th:text="${employee.firstNameKanji} 
@@ -144,8 +144,8 @@
                               : (employee.syokugyoKind == 6? '個人事業主' : 'error')}"
                 ></td>
 
-                <td th:text="${#dates.format(employee.nyuusyaDate, 'yyyy-mm-dd')}"></td>
-                <td th:text="${#dates.format(employee.taisyaDate, 'yyyy-mm-dd')}"></td>
+                <td th:text="${#dates.format(employee.nyuusyaDate, 'yyyy年MM月dd日')}"></td>
+                <td th:text="${#dates.format(employee.taisyaDate, 'yyyy年MM月dd日')}"></td>
                 <td>
                   <a href="./update">更新</a><br />
                   <a onclick="" id="tdelete">削除</a>
