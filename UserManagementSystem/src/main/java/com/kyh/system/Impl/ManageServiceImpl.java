@@ -46,5 +46,32 @@ public class ManageServiceImpl implements ManageService {
 			manageMapper.registerDb(syainId, firstNameKanji, lastNameKanji, seibetu, syozokuKaisya, nyuusyaDate, taisyaDate, syokugyoKind, kinyukikanCode, kinyukikanName, sitenCode, sitenName, kouzaKind, kouzaNum, meigiName, itOs, itBikou);;
 	}
 	
+	@Override
+	public Staff searchById(Integer syainId){
+		return manageMapper.searchByid(syainId);
+	}
+	
+	@Override
+    public void updateEmployee(
+            Integer syainId, String firstNameKanji, String lastNameKanji, Integer seibetu,
+            Integer syozokuKaisya, Date nyuusyaDate, Date taisyaDate, Integer syokugyoKind
+           ) {
+        
+	        Staff staff = new Staff();
+	        staff.setSyainId(syainId);
+	        staff.setFirstNameKanji(firstNameKanji);
+	        staff.setLastNameKanji(lastNameKanji);
+	        staff.setSeibetu(seibetu);
+	        staff.setSyozokuKaisya(syozokuKaisya);
+	        staff.setNyuusyaDate(nyuusyaDate);
+	        staff.setTaisyaDate(taisyaDate);
+	        staff.setSyokugyoKind(syokugyoKind);
 
+        manageMapper.updateDb(staff);
+    }
+	
+	@Override
+	public void deleteEmployee(Integer syainId) {
+			manageMapper.deleteDb(syainId);
+	}
 }

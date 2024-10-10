@@ -40,6 +40,13 @@
     	WHERE LAST_NAME_KANJI LIKE CONCAT('%', #{lastNameKanji,jdbcType=VARCHAR}, '%')
 	</select>
 	
+	<select id="searchByid" resultMap="BaseResultMap">
+    	SELECT
+    	<include refid="Base_Column_List"/>
+    	FROM syain_new
+    	WHERE SYAIN_ID = #{syainId}
+	</select>
+	
 	<insert id="registerDb" parameterType="com.kyh.system.entity.Staff">
 	    INSERT INTO syain_new
 	    (SYAIN_ID, FIRST_NAME_KANJI, LAST_NAME_KANJI, SEIBETU, SYOZOKU_KAISYA, NYUUSYA_DATE, TAISYA_DATE, SYOKUGYO_KIND,
@@ -49,5 +56,19 @@
 	     #{syokugyoKind}, #{kinyukikanCode}, #{kinyukikanName}, #{sitenCode}, #{sitenName}, #{kouzaKind}, 
 	     #{kouzaNum}, #{meigiName}, #{itOs}, #{itBikou})
 	</insert>
+	
+	<update id="updateDb" parameterType="com.kyh.system.entity.Staff">
+    UPDATE syain_new
+    SET FIRST_NAME_KANJI = #{firstNameKanji}, LAST_NAME_KANJI = #{lastNameKanji},
+        SEIBETU = #{seibetu}, SYOZOKU_KAISYA = #{syozokuKaisya},
+        NYUUSYA_DATE = #{nyuusyaDate}, TAISYA_DATE = #{taisyaDate}, 
+        SYOKUGYO_KIND = #{syokugyoKind}, KINYUKIKAN_CODE = #{kinyukikanCode}
+    WHERE SYAIN_ID = #{syainId}
+	</update>
+	
+	<delete id="deleteDb" parameterType="com.kyh.system.entity.Staff">
+    DELETE FROM SYAIN_NEW
+    WHERE SYAIN_ID = #{syainId}
+	</delete>
 
 </mapper>

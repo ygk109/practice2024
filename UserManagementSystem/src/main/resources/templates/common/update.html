@@ -12,10 +12,10 @@
       border-collapse: collapse;
       font-size: 16px;
     }
-    label{
+    label {
       font-size: 16px;
     }
-    button{
+    button {
       border: 0;
       line-height: 2.5;
       font-size: 1rem;
@@ -25,18 +25,11 @@
       text-shadow: 1px 1px 1px #000;
       border-radius: 10px;
       background-color: rgb(0, 180, 220);
-      background-image: linear-gradient(
-      to top left,
-      rgba(0, 0, 0, 0.2),
-      rgba(0, 0, 0, 0.2) 30%,
-      rgba(0, 0, 0, 0)
-      );
-    box-shadow:
-    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+      background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+      box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
     }
-    .update:hover{
-        background-color: aqua;
+    .update:hover {
+      background-color: aqua;
     }
     .ftitle {
       text-align: left;
@@ -46,104 +39,136 @@
     .fitem {
       text-align: left;
     }
-    .info label{
+    .info label {
       width: 1000px;
     }
-    .dtable select{
-      border:none;
+    .dtable select {
+      border: none;
     }
   </style>
 
   <body>
-<!-- 메뉴명 -->
-<form method="get" action="/manage/update">
+    <!-- 메뉴명 -->
+    <form method="post" th:action="@{/manage/update/form}" th:object="${employee}">
+      <input type="hidden" th:field="*{syainId}" />
       <div class="main">
-        <div>      
-            <a style="font-size: 20px">株式会社ブライトスター</a>
+        <div>
+          <a style="font-size: 20px">株式会社ブライトスター</a>
         </div>
-        
+
         <div style="margin-left: 380px">
-            <a style="font-size: 35px">社内統合管理システム</a>
-        </div>
-        
-        <div>
-        <label style="font-size: 12px">BRIGHT STAR CO.LTD.</label>  
+          <a style="font-size: 35px">社内統合管理システム</a>
         </div>
 
-    <!-- 사원등록 -->
-    <div style="background: linear-gradient(gray,white, gray); border-radius: 0.2em; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px"><a style="color: blue">■ </a>社員更新</div>
+        <div>
+          <label style="font-size: 12px">BRIGHT STAR CO.LTD.</label>
+        </div>
 
-    <!-- 기본정보 -->
-    <div style="width: 1000px; height: 280px; padding: 0px 20px">
-      <div class="ftitle">基本情報</div><hr style="border-color: aqua;">
-        <div>
-          <label>社員名（漢字）</label>
-          <a>姓</a><input type="text" id="firstName" maxlength="15" style="margin-left: 15px; width:120px" required="true" />
-          <a>名</a><input type="text" id="lastName" maxlength="15" style="margin-left: 15px; width:120px" required="true" />
-          <a style="color: red">必須</a>
+        <!-- 사원등록 -->
+        <div style="background: linear-gradient(gray, white, gray); border-radius: 0.2em; font-size: 24px; margin: 10px 0px 10px 0px; width: 1200px">
+          <a style="color: blue">■ </a>社員更新
         </div>
-        <div>
-          <label>性別</label>
-          <input type="radio" style="margin-left: 8%;" checked/><a>男</a>
-          <input type="radio"/><a>女</a>  
-        </div>
-        <div class="ftitle">会社関連情報</div><hr style="border-color: aqua;">
-        <div>
+
+        <!-- 기본정보 -->
+        <div style="width: 1000px; height: 280px; padding: 0px 20px">
+          <div class="ftitle">基本情報</div>
+          <hr style="border-color: aqua" />
           <div>
-          <label>所属会社</label>
-          <select style="margin-left: 5%;">
-            <option>株式会社ブライトスター</option>
-            <option>株式会社トップクラウド</option>
-          </select>
+            <label>社員名（漢字）</label>
+            <a>姓</a>
+            <input
+              type="text"
+              id="firstName"
+              name="firstNameKanji"
+              maxlength="15"
+              style="margin-left: 15px; width: 120px"
+              required="true"
+              th:value="${employee.firstNameKanji}"
+            />
+            <a>名</a>
+            <input
+              type="text"
+              id="lastName"
+              name="lastNameKanji"
+              maxlength="15"
+              style="margin-left: 15px; width: 120px"
+              required="true"
+              th:value="${employee.lastNameKanji}"
+            />
+            <a style="color: red">必須</a>
           </div>
+
           <div>
-            <label>入社日</label>
-            <input type="date" name="startDate" id="currentDate" style="margin-left: 6.5%;" />
+            <label>性別</label>
+            <input type="radio" id="genderMale" name="seibetu" value="1" th:checked="${employee.seibetu == 1}" /><a>男</a>
+            <input type="radio" id="genderFemale" name="seibetu" value="2" th:checked="${employee.seibetu == 2}" /><a>女</a>
           </div>
+
+          <div class="ftitle">会社関連情報</div>
+          <hr style="border-color: aqua" />
           <div>
-            <label>退社日</label>
-            <input type="date" name="endDate" id="currentDate2" style="margin-left: 6.5%;" />
-          </div>
-          <div>
-            <label>職業種類</label>
-            <select style="margin-left: 5%;">
-              <option>役員</option>
-              <option>総務</option>
-              <option>IT営業</option>
-              <option selected>ITエンジニア</option>
-              <option>不動産スタッフ</option>
-              <option>個人事業主</option>
+            <label>所属会社</label>
+            <select id="companyName" name="syozokuKaisya" style="margin-left: 5%">
+              <option value="1" th:selected="${employee.syozokuKaisya == 1}">株式会社ブライトスター</option>
+              <option value="2" th:selected="${employee.syozokuKaisya == 2}">株式会社トップクラウド</option>
             </select>
           </div>
-          <div style="margin: 10px 0 10px 0; text-align: center;">
-            <button class="update" type="submit" id="updateButton" onclick=location.href="." style="width: 150px; height: 35px; ">更　新</button>
+
+          <div>
+            <label>入社日</label>
+            <input type="date" id="startDate" name="nyuusyaDate" style="margin-left: 6.5%" th:value="${formattedNyuushyaDate}" />
+          </div>
+
+          <div>
+            <label>退社日</label>
+            <input type="date" id="endDate" name="taisyaDate" style="margin-left: 6.5%" th:value="${formattedTaisyaDate}" />
+          </div>
+
+          <div>
+            <label>職業種類</label>
+            <select id="jobName" name="syokugyoKind" style="margin-left: 5%">
+              <option value="1" th:selected="${employee.syokugyoKind == 1}">役員</option>
+              <option value="2" th:selected="${employee.syokugyoKind == 2}">総務</option>
+              <option value="3" th:selected="${employee.syokugyoKind == 3}">IT営業</option>
+              <option value="4" th:selected="${employee.syokugyoKind == 4}">ITエンジニア</option>
+              <option value="5" th:selected="${employee.syokugyoKind == 5}">不動産スタッフ</option>
+              <option value="6" th:selected="${employee.syokugyoKind == 6}">個人事業主</option>
+            </select>
+          </div>
+
+          <div style="margin: 10px 0 10px 0; text-align: center">
+            <button class="update" type="submit" id="updateButton" style="width: 150px; height: 35px">更　新</button>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</form>
-</body>
+    </form>
+  </body>
   <!-- 날짜 변환 스크립트 -->
   <script>
-    document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
-    document.getElementById('currentDate2').value = new Date().toISOString().substring(0, 10);
-    
-    document.getElementById('updateButton').addEventListener('click',function(){
-      const firstname = document.getElementById('firstName').value;
-      const lastname = document.getElementById('lastName').value;
-      if(firstname == ""){
-        alert('姓を入力してください。');
+    document.getElementById("startDate").value = new Date().toISOString().substring(0, 10);
+    document.getElementById("endDate").value = new Date().toISOString().substring(0, 10);
+
+    document.getElementById("updateButton").addEventListener("click", function () {
+      const firstname = document.getElementById("firstName").value;
+      const lastname = document.getElementById("lastName").value;
+      if (firstname == "") {
+        alert("姓を入力してください。");
       }
 
-      if(lastname == ""){
-        alert('名を入力してください。');
-      }
-
-      else{
+      if (lastname == "") {
+        alert("名を入力してください。");
+      } else {
         return true;
       }
     });
 
+    // document.getElementById('firstName').value = "${employees.firstNameKanji}";
+
+    // document.getElementById("lasttName").value = "${employees.lastNameKanji}";
+    // document.getElementById('gender').value = "";`
+    // document.getElementById('companyName').value = "";`
+    // document.getElementById('startDate').value = "";`
+    // document.getElementById('endDate').value = "";`
+    // document.getElementById('jobName').value = "";`
   </script>
 </html>

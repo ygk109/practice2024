@@ -29,5 +29,14 @@ public interface ManageService {
 		);
 
 	int count(String lastNameKanji);
+	
+	Staff searchById(Integer syainId);
+	
+    public void updateEmployee(
+            Integer syainId, String firstNameKanji, String lastNameKanji, Integer seibetu,
+            Integer syozokuKaisya, Date nyuusyaDate, Date taisyaDate, Integer syokugyoKind
+    		);
+
+	void deleteEmployee(Integer syainId);
 }
 

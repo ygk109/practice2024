@@ -29,4 +29,10 @@ public interface ManageMapper {
 
 	int countDb(String lastNameKanji);
 
+	Staff searchByid(Integer syainId);
+	
+	void updateDb(Staff staff);
+	
+	void deleteDb(Integer syainId);
+
 }
